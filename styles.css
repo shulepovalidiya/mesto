@@ -1,0 +1,27 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    background-color: black;
+    padding: 45px 0 60px;
+}
+
+.header {
+    min-width: 880px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.header__logo {
+    max-width: 142px;
+}
+
+.header__line {
+    margin: 41px 0 0 0;
+}
+
+
