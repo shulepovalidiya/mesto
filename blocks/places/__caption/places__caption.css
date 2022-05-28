@@ -1,0 +1,10 @@
+.places__caption {
+    max-width: 282px;
+    max-height: 79px;
+    border-radius: 0 0 10px 10px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 15px 31px 21px;
+}

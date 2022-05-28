@@ -1,0 +1,17 @@
+.places__button {
+    min-width: 24px;
+    min-height: 20px;
+    background-image: url(../../../images/places/places__button.svg);
+    border: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    transition: .3s ease-out;
+    padding: 0;
+}
+
+.places__button:hover {
+    opacity: 60%;
+    transition: .3s ease-out;
+    cursor: pointer;
+}
