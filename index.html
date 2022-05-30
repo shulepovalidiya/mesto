@@ -12,7 +12,6 @@
     <div class="page">
         <header class="header">
             <img src="./images/header/header__logo.svg" alt="Логотип Место" class="header__logo">
-            <div class="header__line"></div>
         </header>
 
         <main>
@@ -20,10 +19,11 @@
                 <img src="./images/profile/profile__avatar.jpg" alt="Аватар" class="profile__avatar">
                 <div class="profile__info">
                     <h1 class="profile__username">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button"></button>
+                    <button type="button" class="profile__edit-button"></button>
                     <p class="profile__bio">Исследователь океана</p>
+
                 </div>
-                <button class="profile__add-button"></button>
+                <button type="button" class="profile__add-button"></button>
             </section>
 
             <section class="places">
@@ -31,43 +31,43 @@
                     <li class="places__card">
                         <img src="./images/places/places__item-karachayevsk.jpg" alt="Карачаевск" class="places__image">
                         <div class="places__caption">
-                            <p class="places__name">Карачаевск</p>
-                            <button class="places__button"></button>
+                            <h2 class="places__name">Карачаевск</h2>
+                            <button type="button" class="places__button"></button>
                         </div>
                     </li>
                     <li class="places__card">
                         <img src="./images/places/places__item-elbrus.jpg" alt="Карачаевск" class="places__image">
                         <div class="places__caption">
-                            <p class="places__name">Гора Эльбрус</p>
-                            <button class="places__button"></button>
+                            <h2 class="places__name">Гора Эльбрус</h2>
+                            <button type="button" class="places__button"></button>
                         </div>
                     </li>
                     <li class="places__card">
                         <img src="./images/places/places__item-dombay.jpg" alt="Карачаевск" class="places__image">
                         <div class="places__caption">
-                            <p class="places__name">Домбай</p>
-                            <button class="places__button"></button>
+                            <h2 class="places__name">Домбай</h2>
+                            <button type="button" class="places__button"></button>
                         </div>
                     </li>
                     <li class="places__card">
                         <img src="./images/places/places__item-elbrus.jpg" alt="Карачаевск" class="places__image">
                         <div class="places__caption">
-                            <p class="places__name">Гора Эльбрус</p>
-                            <button class="places__button"></button>
+                            <h2 class="places__name">Гора Эльбрус</h2>
+                            <button type="button" class="places__button"></button>
                         </div>
                     </li>
                     <li class="places__card">
                         <img src="./images/places/places__item-dombay.jpg" alt="Карачаевск" class="places__image">
                         <div class="places__caption">
-                            <p class="places__name">Домбай</p>
-                            <button class="places__button"></button>
+                            <h2 class="places__name">Домбай</h2>
+                            <button type="button" class="places__button"></button>
                         </div>
                     </li>
                     <li class="places__card">
                         <img src="./images/places/places__item-karachayevsk.jpg" alt="Карачаевск" class="places__image">
                         <div class="places__caption">
-                            <p class="places__name">Карачаево-Черкессия</p>
-                            <button class="places__button"></button>
+                            <h2 class="places__name">Карачаево-Черкессия</h2>
+                            <button type="button" class="places__button"></button>
                         </div>
                     </li>
                 </ul>
@@ -79,12 +79,12 @@
         </footer>
 
         <div class="popup popup_hidden">
-            <button class="popup__edit-close-button"></button>
+            <button type="button" class="popup__edit-close-button"></button>
             <form class="popup__edit-form">
                 <h2 class="popup__edit-heading">Редактировать профиль</h2>
-                <input type="text" id="username" class="popup__edit-field" value="">
-                <input type="text" id="bio" class="popup__edit-field" value="">
-                <input type="submit" class="popup__submit-button" value="Сохранить">
+                <input type="text" id="username" class="popup__edit-field">
+                <input type="text" id="bio" class="popup__edit-field">
+                <button type="submit" class="popup__submit-button">Сохранить</button>
             </form>
         </div>
     </div>

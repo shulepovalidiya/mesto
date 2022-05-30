@@ -1,8 +1,6 @@
 .places__caption {
-    max-width: 282px;
-    max-height: 79px;
     border-radius: 0 0 10px 10px;
-    background-color: #FFFFFF;
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;

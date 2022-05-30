@@ -4,6 +4,7 @@
     background-size: cover;
     width: 24px;
     height: 24px;
+    min-height: 18px;
     transition: .3s ease-out;
     border: none;
     padding: 0;
@@ -26,7 +27,7 @@
 
 @media screen and (max-width: 621px) {
     .profile__edit-button {
-        width: 17px;
-        height: 17px;
+        width: 18px;
+        height: 18px;
     }
 }

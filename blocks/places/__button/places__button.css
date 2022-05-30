@@ -1,6 +1,6 @@
 .places__button {
-    min-width: 24px;
-    min-height: 20px;
+    min-width: 22px;
+    min-height: 19px;
     background-image: url(../../../images/places/places__button.svg);
     border: none;
     background-size: cover;
