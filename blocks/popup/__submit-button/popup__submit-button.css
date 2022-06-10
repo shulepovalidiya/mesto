@@ -9,6 +9,7 @@
     max-height: 50px;
     text-align: center;
     border-radius: 2px;
+    transition: opacity .3s ease-out;
 }
 
 .popup__submit-button:hover {

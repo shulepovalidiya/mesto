@@ -1,4 +1,4 @@
-.popup__edit-form {
+.popup__form {
     max-width: 430px;
     display: flex;
     flex-direction: column;
@@ -7,10 +7,12 @@
     min-height: 330px;
     padding: 34px 36px 37px;
     box-sizing: border-box;
+    grid-column: 1;
+    grid-row: 2;
 }
 
 @media screen and (max-width: 621px) {
-    .popup__edit-form {
+    .popup__form {
         max-width: 282px;
         max-height: 322px;
         padding: 25px 22px;
