@@ -36,23 +36,26 @@
             <p class="footer__copyright">&COPY; 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup popup_hidden popup_edit-profile">
+        <div class="popup popup_hidden popup_type_edit-profile">
             <button type="button" class="popup__close-button popup__edit-close-button"></button>
-            <form class="popup__form popup__edit-form">
-                <h2 class="popup__heading popup__edit-heading">Редактировать профиль</h2>
-                <input type="text" id="username" class="popup__field popup__edit-field">
-                <input type="text" id="bio" class="popup__field popup__edit-field">
+            <form class="popup__form popup__form_type_edit" name="edit-form">
+                <h2 class="popup__heading">Редактировать профиль</h2>
+                <input type="text" id="name-field" name="username" class="popup__field popup__edit-field"
+                    placeholder="Ваше имя">
+                <input type="text" id="bio-field" name="bio" class="popup__field popup__edit-field"
+                    placeholder="Чем вы занимаетесь?">
                 <button type="submit" class="popup__submit-button popup__edit-submit-button">Сохранить</button>
             </form>
         </div>
 
-        <div class="popup popup_hidden popup_add-card">
+        <div class="popup popup_hidden popup_type_add-card">
             <button type="button" class="popup__close-button popup__add-card-close-button"></button>
-            <form class="popup__form popup__add-card-form">
-                <h2 class="popup__heading popup__add-card-heading">Новое место</h2>
-                <input type="text" id="place-name" class="popup__field popup__add-card-field" placeholder="Название">
-                <input type="text" id="place-picture-link" class="popup__field popup__add-card-field"
-                    placeholder="Ссылка на картинку">
+            <form class="popup__form popup__form_type_add-card">
+                <h2 class="popup__heading">Новое место</h2>
+                <input type="text" id="place-name-field" class="popup__field popup__add-card-field"
+                    placeholder="Название" name="place-name">
+                <input type="url" id="picture-link-field" class="popup__field popup__add-card-field"
+                    placeholder="Ссылка на картинку" name="picture-link">
                 <button type="submit" class="popup__submit-button popup__add-card-submit-button">Создать</button>
             </form>
         </div>
@@ -60,9 +63,8 @@
         <div class="popup popup_hidden popup_picture-view">
             <div class="popup__close-button popup__picture-close-button"></div>
             <figure class="popup__image-container">
-                <img alt="Изображение места" class="popup__image">
-                <figcaption>
-                    <p class="popup__image-caption"></p>
+                <img alt="Изображение места" class="popup__image" src="#">
+                <figcaption class="popup__image-caption">
                 </figcaption>
             </figure>
         </div>
@@ -72,7 +74,7 @@
     <template class="places-template">
         <li class="places__card">
             <button type="button" class="places__delete-button"></button>
-            <img alt="Изображение места" class="places__image">
+            <img alt="Изображение места" class="places__image" src="#">
             <div class="places__caption">
                 <h2 class="places__name"></h2>
                 <button type="button" class="places__like-button"></button>
@@ -80,6 +82,7 @@
         </li>
     </template>
 
+    <script src="./scripts/initial-cards.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 
