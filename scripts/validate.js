@@ -7,6 +7,15 @@ const validationSettings = {
     errorClass: 'popup__field-error_active'
 };
 
+const getFormElementsAndToggleButton = (form) => {
+    const inputList = Array.from(form.querySelectorAll(validationSettings.inputSelector));
+    inputList.forEach((inputElement) => {
+        hideInputError(form, inputElement);
+    });
+    const buttonElement = form.querySelector(validationSettings.submitButtonSelector);
+    toggleButtonState(inputList, buttonElement);
+}
+
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(validationSettings.inputErrorClass);
@@ -38,14 +47,16 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, button) => {
     if (hasInvalidInput(inputList)) {
         button.classList.add(validationSettings.inactiveButtonClass);
+        button.setAttribute('disabled', true)
     } else {
         button.classList.remove(validationSettings.inactiveButtonClass);
+        button.removeAttribute('disabled', true)
     }
 };
 
 const setEventListeners = (formElement) => {
     const inputList = Array.from(formElement.elements);
-    const buttonElement = formElement.querySelector('.popup__submit-button');
+    const buttonElement = formElement.querySelector(validationSettings.submitButtonSelector);
     toggleButtonState(inputList, buttonElement);
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {

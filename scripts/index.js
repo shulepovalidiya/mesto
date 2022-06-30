@@ -18,14 +18,22 @@ const addNewCardForm = document.querySelector('.popup__form_type_add-card');
 const popupFullSizePicture = document.querySelector('.popup_picture-view');
 const popupFullSizePictureCloseButton = document.querySelector('.popup__picture-close-button');
 
-const showPopup = (popup) => popup.classList.remove('popup_hidden');
-const hidePopup = (popup) => popup.classList.add('popup_hidden');
+const popupList = document.querySelectorAll('.popup');
+
+const showPopup = (popup) => {
+    popup.classList.remove('popup_hidden');
+    document.addEventListener('keydown', hidePopupByEscape);
+};
+
+const hidePopup = (popup) => {
+    popup.classList.add('popup_hidden');
+    document.removeEventListener('keydown', hidePopupByEscape);
+};
 
 const hidePopupByOverlayClick = (popup) => {
     popup.addEventListener('click', function (evt) {
         if (evt.target.classList.contains('popup')) {
             hidePopup(popup);
-            document.removeEventListener('keydown', hidePopupByEscape);
         };
     });
 };
@@ -34,15 +42,13 @@ const hidePopupByCloseButton = (popup) => {
     popup.addEventListener('click', function (evt) {
         if (evt.target.classList.contains('popup__close-button')) {
             hidePopup(popup);
-            document.removeEventListener('keydown', hidePopupByEscape);
         };
     });
 };
 
 function hidePopupByEscape(evt) {
     if (evt.key === 'Escape') {
-        const popupArray = Array.from(document.querySelectorAll('.popup'));
-        popupArray.forEach((popup) => {
+        popupList.forEach((popup) => {
             if (!popup.classList.contains('popup_hidden')) {
                 hidePopup(popup);
             }
@@ -50,8 +56,6 @@ function hidePopupByEscape(evt) {
     }
 }
 
-
-const popupList = document.querySelectorAll('.popup');
 popupList.forEach((popup) => {
     hidePopupByOverlayClick(popup);
     hidePopupByCloseButton(popup);
@@ -61,20 +65,15 @@ editProfileOpenButton.addEventListener('click', function () {
     showPopup(editProfilePopup);
     editProfileFormUsername.setAttribute('value', profileUsername.textContent);
     editProfileFormUserBio.setAttribute('value', profileBio.textContent);
-    const inputList = Array.from(editProfilePopup.querySelectorAll('.popup__field')); //переписать
-    const buttonElement = editProfilePopup.querySelector('.popup__submit-button');
-    toggleButtonState(inputList, buttonElement);
-    document.addEventListener('keydown', hidePopupByEscape);
     editProfileForm.reset();
+    getFormElementsAndToggleButton(editProfileForm);
+
 });
 
 addNewCardOpenButton.addEventListener('click', function () {
     showPopup(addNewCardPopup);
-    const inputList = Array.from(editProfilePopup.querySelectorAll('.popup__field')); //переписать
-    const buttonElement = editProfilePopup.querySelector('.popup__submit-button');
-    toggleButtonState(inputList, buttonElement);
-    document.addEventListener('keydown', hidePopupByEscape);
     addNewCardForm.reset();
+    getFormElementsAndToggleButton(addNewCardForm);
 });
 
 function editProfileFormSubmitHandler(evt) {
@@ -82,7 +81,6 @@ function editProfileFormSubmitHandler(evt) {
     profileUsername.textContent = editProfileFormUsername.value;
     profileBio.textContent = editProfileFormUserBio.value;
     hidePopup(editProfilePopup);
-    document.removeEventListener('keydown', hidePopupByEscape);
 };
 
 editProfileForm.addEventListener('submit', editProfileFormSubmitHandler);
@@ -115,7 +113,6 @@ function createNewCard(placeName, placeLink) {
         document.querySelector('.popup__image').alt = placeName;
         document.querySelector('.popup__image-caption').textContent = placeName;
         showPopup(popupFullSizePicture);
-        document.addEventListener('keydown', hidePopupByEscape);
     });
 
     return placesCard;
@@ -131,7 +128,6 @@ function addCardToContainer(evt) {
     const inputCardName = document.querySelector('#place-name-field').value;
     const inputCardPictureLink = document.querySelector('#picture-link-field').value;
     const newCard = createNewCard(inputCardName, inputCardPictureLink);
-    addNewCardForm.reset();
     placesCardsContainer.prepend(newCard);
     hidePopup(addNewCardPopup);
 };
