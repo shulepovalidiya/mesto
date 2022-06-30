@@ -6,11 +6,8 @@
     font-size: 14px;
     line-height: 1.21;
     padding: 0 0 13px;
-    margin: 0 0 30px 0;
-}
-
-.popup__field:last-of-type {
-    margin: 0 0 48px 0;
+    margin: 0;
+    width: 100%;
 }
 
 .popup__field::-webkit-input-placeholder {
@@ -29,8 +26,8 @@
     color: #C4C4C4;
 }
 
-@media screen and (max-width: 621px) {
-    .popup__field:last-of-type {
-        margin: 0 0 45px 0;
-    }
-}
+/*@media screen and (max-width: 621px) {*/
+/*    .popup__field:last-child {*/
+/*        margin: 0 0 45px 0;*/
+/*    }*/
+/*}*/

@@ -18,34 +18,63 @@ const addNewCardForm = document.querySelector('.popup__form_type_add-card');
 const popupFullSizePicture = document.querySelector('.popup_picture-view');
 const popupFullSizePictureCloseButton = document.querySelector('.popup__picture-close-button');
 
-function showPopup(popup) {
-    popup.classList.remove('popup_hidden');
-}
+const showPopup = (popup) => popup.classList.remove('popup_hidden');
+const hidePopup = (popup) => popup.classList.add('popup_hidden');
 
-function hidePopup(popup) {
-    popup.classList.add('popup_hidden');
+const hidePopupByOverlayClick = (popup) => {
+    popup.addEventListener('click', function (evt) {
+        if (evt.target.classList.contains('popup')) {
+            hidePopup(popup);
+            document.removeEventListener('keydown', hidePopupByEscape);
+        };
+    });
 };
 
-popupFullSizePictureCloseButton.addEventListener('click', function () {
-    hidePopup(popupFullSizePicture);
+const hidePopupByCloseButton = (popup) => {
+    popup.addEventListener('click', function (evt) {
+        if (evt.target.classList.contains('popup__close-button')) {
+            hidePopup(popup);
+            document.removeEventListener('keydown', hidePopupByEscape);
+        };
+    });
+};
+
+function hidePopupByEscape(evt) {
+    if (evt.key === 'Escape') {
+        const popupArray = Array.from(document.querySelectorAll('.popup'));
+        popupArray.forEach((popup) => {
+            if (!popup.classList.contains('popup_hidden')) {
+                hidePopup(popup);
+            }
+        });
+    }
+}
+
+
+const popupList = document.querySelectorAll('.popup');
+popupList.forEach((popup) => {
+    hidePopupByOverlayClick(popup);
+    hidePopupByCloseButton(popup);
 });
 
 editProfileOpenButton.addEventListener('click', function () {
     showPopup(editProfilePopup);
     editProfileFormUsername.setAttribute('value', profileUsername.textContent);
     editProfileFormUserBio.setAttribute('value', profileBio.textContent);
-});
-
-editProfileCloseButton.addEventListener('click', function () {
-    hidePopup(editProfilePopup);
+    const inputList = Array.from(editProfilePopup.querySelectorAll('.popup__field')); //переписать
+    const buttonElement = editProfilePopup.querySelector('.popup__submit-button');
+    toggleButtonState(inputList, buttonElement);
+    document.addEventListener('keydown', hidePopupByEscape);
+    editProfileForm.reset();
 });
 
 addNewCardOpenButton.addEventListener('click', function () {
     showPopup(addNewCardPopup);
-});
-
-addNewCardCloseButton.addEventListener('click', function () {
-    hidePopup(addNewCardPopup);
+    const inputList = Array.from(editProfilePopup.querySelectorAll('.popup__field')); //переписать
+    const buttonElement = editProfilePopup.querySelector('.popup__submit-button');
+    toggleButtonState(inputList, buttonElement);
+    document.addEventListener('keydown', hidePopupByEscape);
+    addNewCardForm.reset();
 });
 
 function editProfileFormSubmitHandler(evt) {
@@ -53,6 +82,7 @@ function editProfileFormSubmitHandler(evt) {
     profileUsername.textContent = editProfileFormUsername.value;
     profileBio.textContent = editProfileFormUserBio.value;
     hidePopup(editProfilePopup);
+    document.removeEventListener('keydown', hidePopupByEscape);
 };
 
 editProfileForm.addEventListener('submit', editProfileFormSubmitHandler);
@@ -60,13 +90,12 @@ editProfileForm.addEventListener('submit', editProfileFormSubmitHandler);
 const placesCardTemplate = document.querySelector('.places-template').content;
 const placesCardsContainer = document.querySelector('.places__cards');
 
-
 function createNewCard(placeName, placeLink) {
     const placesCard = placesCardTemplate.cloneNode(true);
     const cardImage = placesCard.querySelector('.places__image');
     const cardName = placesCard.querySelector('.places__name');
     const cardLikeButton = placesCard.querySelector('.places__like-button');
-    const deleteButton = placesCard.querySelector('.places__delete-button');
+    const cardDeleteButton = placesCard.querySelector('.places__delete-button');
 
     cardImage.src = placeLink;
     cardImage.alt = placeName;
@@ -76,8 +105,8 @@ function createNewCard(placeName, placeLink) {
         evt.target.classList.toggle('places__like-button_active');
     });
 
-    deleteButton.addEventListener('click', function () {
-        const cardToRemove = deleteButton.closest('.places__card');
+    cardDeleteButton.addEventListener('click', function () {
+        const cardToRemove = cardDeleteButton.closest('.places__card');
         cardToRemove.remove();
     });
 
@@ -86,6 +115,7 @@ function createNewCard(placeName, placeLink) {
         document.querySelector('.popup__image').alt = placeName;
         document.querySelector('.popup__image-caption').textContent = placeName;
         showPopup(popupFullSizePicture);
+        document.addEventListener('keydown', hidePopupByEscape);
     });
 
     return placesCard;
@@ -107,8 +137,6 @@ function addCardToContainer(evt) {
 };
 
 addNewCardForm.addEventListener('submit', addCardToContainer);
-
-
 
 
 

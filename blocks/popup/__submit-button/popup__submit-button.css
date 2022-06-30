@@ -9,12 +9,14 @@
     text-align: center;
     border-radius: 2px;
     transition: opacity .3s ease-out;
+    margin-top: 31px;
+    cursor: pointer;
 }
 
 .popup__submit-button:hover {
     opacity: 0.8;
     transition: .3s ease-out;
-    cursor: pointer;
+
 }
 
 @media screen and (max-width: 621px) {

@@ -4,11 +4,12 @@
     flex-direction: column;
     background-color: #fff;
     border-radius: 10px;
-    min-height: 330px;
+    max-height: 330px;
     padding: 34px 36px 37px;
     box-sizing: border-box;
     grid-column: 1;
     grid-row: 2;
+    cursor: default;
 }
 
 @media screen and (max-width: 621px) {
