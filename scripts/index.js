@@ -18,6 +18,9 @@ const popupList = document.querySelectorAll('.popup');
 
 const popupPicture = document.querySelector('.popup_picture-view');
 
+const inputName = document.querySelector('#place-name-field');
+const inputPictureLink = document.querySelector('#picture-link-field');
+
 function hidePopupByEscape(evt) {
     if (evt.key === 'Escape') {
         popupList.forEach((popup) => {
@@ -80,14 +83,12 @@ editProfileOpenButton.addEventListener('click', function () {
     showPopup(editProfilePopup);
     editProfileFormUsername.setAttribute('value', profileUsername.textContent);
     editProfileFormUserBio.setAttribute('value', profileBio.textContent);
-    editProfileForm.reset();
-    editProfileFormValidated.getFormElementsAndToggleButton();
+    editProfileFormValidated.resetValidation();
 });
 
 addNewCardOpenButton.addEventListener('click', function () {
     showPopup(addNewCardPopup);
-    addNewCardForm.reset();
-    addNewCardFormValidated.getFormElementsAndToggleButton();
+    addNewCardFormValidated.resetValidation();
 });
 
 function handleProfileFormSubmit(evt) {
@@ -115,14 +116,14 @@ initialCards.forEach((item) => {
 
 function addCardToContainer(evt) {
     evt.preventDefault();
-    const inputCardName = document.querySelector('#place-name-field').value;
-    const inputCardPictureLink = document.querySelector('#picture-link-field').value;
+    const inputCardName = inputName.value;
+    const inputCardPictureLink = inputPictureLink.value;
     const cardData = {
         name: inputCardName,
         link: inputCardPictureLink,
     }
     placesCardsContainer.prepend(createNewCard(cardData));
-    document.querySelector('.popup__add-card-submit-button').setAttribute('disabled', true);
+    addNewCardFormValidated.resetValidation();
     hidePopup(addNewCardPopup);
 };
 

@@ -10,19 +10,18 @@ export const validationSettings = {
 export class FormValidator {
     constructor(validationSettings, formElement) {
         this._formSelector = validationSettings.formSelector;
-        this._formList = Array.from(document.querySelectorAll(this._formSelector));
         this._inputSelector = validationSettings.inputSelector;
         this._submitButtonSelector = validationSettings.submitButtonSelector;
         this._inactiveButtonClass = validationSettings.inactiveButtonClass;
         this._inputErrorClass = validationSettings.inputErrorClass;
         this._errorClass = validationSettings.errorClass;
         this._formElement = formElement;
-        this._inputElement = this._formElement.querySelector(this._inputSelector);
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     }
 
-    getFormElementsAndToggleButton() {
+    resetValidation() {
+        this._formElement.reset();
         this._inputList.forEach((inputElement) => {
             this._hideInputError(inputElement);
         });
