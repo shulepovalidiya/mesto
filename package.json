@@ -1,0 +1,24 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "Это очередная проектная работа в рамках курса «Веб-разработчик» от Яндекс Практикума и моя первая работа с использованием JavaScript :)",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack --mode development",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shulepovalidiya/mesto.git"
+  },
+  "author": "Lidiya Shulepova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shulepovalidiya/mesto/issues"
+  },
+  "homepage": "https://github.com/shulepovalidiya/mesto#readme",
+  "devDependencies": {
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  }
+}
