@@ -31,6 +31,7 @@ export class Card {
 
     _deleteCard() {
         this._cardTemplate.remove();
+        this._cardTemplate = null;
     }
 
     _setEventListeners() {
