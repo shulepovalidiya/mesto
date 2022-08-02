@@ -1,7 +1,7 @@
 import './index.css';
 import { initialCards } from "../utils/initial-cards.js";
 import { validationSettings } from "../utils/validationSettings";
-import { editProfileConfig, addNewCardConfig } from "../utils/constants";
+import { userInfoConfig, newCardConfig } from "../utils/constants";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { PopupWithImage } from "../components/PopupWithImage";
@@ -47,21 +47,21 @@ function handleCardClick(name, link) {
     popupWithImage.open(name, link)
 }
 
-const editProfileFormValidated = new FormValidator(validationSettings, editProfileConfig.form);
+const editProfileFormValidated = new FormValidator(validationSettings, userInfoConfig.form);
 editProfileFormValidated.enableValidation();
 
-const addNewCardFormValidated = new FormValidator(validationSettings, addNewCardConfig.form);
+const addNewCardFormValidated = new FormValidator(validationSettings, newCardConfig.form);
 addNewCardFormValidated.enableValidation();
 
-editProfileConfig.openButton.addEventListener('click', function () {
+userInfoConfig.openButton.addEventListener('click', function () {
     popupWithEditForm.open();
     const currentUserData = userInfo.getUserInfo();
-    editProfileConfig.nameField.setAttribute('value', currentUserData.name);
-    editProfileConfig.bioField.setAttribute('value', currentUserData.bio);
+    userInfoConfig.nameField.setAttribute('value', currentUserData.name);
+    userInfoConfig.bioField.setAttribute('value', currentUserData.bio);
     editProfileFormValidated.resetValidation();
 });
 
-addNewCardConfig.openButton.addEventListener('click', function () {
+newCardConfig.openButton.addEventListener('click', function () {
     popupWithAddCardForm.open();
     addNewCardFormValidated.resetValidation();
 });
