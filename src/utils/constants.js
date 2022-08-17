@@ -9,3 +9,4 @@ export const newCardConfig = {
     openButton: document.querySelector('.profile__add-button'),
     form: document.querySelector('.popup__form_type_add-card'),
 }
+

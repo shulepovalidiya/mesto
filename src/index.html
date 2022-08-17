@@ -72,6 +72,14 @@
         </form>
     </div>
 
+    <div class="popup popup_hidden popup_type_confirm-deletion">
+        <button type="button" class="popup__close-button popup__confirm-deletion-close-button"></button>
+        <form class="popup__form popup__form_type_confirm-deletion" novalidate>
+            <h2 class="popup__heading">Вы уверены?</h2>
+            <button type="submit" class="popup__submit-button popup__confirm-deletion-submit-button">Да</button>
+        </form>
+    </div>
+
     <div class="popup popup_hidden popup_picture-view">
         <div class="popup__close-button popup__picture-close-button"></div>
         <figure class="popup__image-container">
@@ -90,6 +98,7 @@
         <div class="places__caption">
             <h2 class="places__name"></h2>
             <button type="button" class="places__like-button"></button>
+            <div class="places__like-counter"></div>
         </div>
     </li>
 </template>

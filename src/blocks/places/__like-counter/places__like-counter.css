@@ -1,0 +1,7 @@
+.places__like-counter {
+    color: black;
+    font-size: 13px;
+    position: absolute;
+    transform: translate(227px, 18px);
+}
+
