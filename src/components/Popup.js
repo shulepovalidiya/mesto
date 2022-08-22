@@ -3,6 +3,7 @@ export class Popup {
         this._popupCommonClass = 'popup';
         this._popupElement = document.querySelector(popupSelector);
         this._popupHiddenClass = 'popup_hidden';
+        this._submitButton = this._popupElement.querySelector('.popup__submit-button');
         this._handleEscClose = this._handleEscClose.bind(this);
         this._handleOverlayClose = this._handleOverlayClose.bind(this);
         this._handleButtonClose = this._handleButtonClose.bind(this);
@@ -36,6 +37,14 @@ export class Popup {
         if (evt.target.classList.contains('popup__close-button')) {
             this.close();
         }
+    }
+
+    handleSavingData() {
+        this._submitButton.textContent = 'Сохранение...';
+    };
+
+    handleDataSaved() {
+        this._submitButton.textContent = 'Сохранить';
     }
 
     setEventListeners() {

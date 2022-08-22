@@ -1,8 +1,8 @@
 .places__caption {
-    border-radius: 0 0 10px 10px;
+    align-items: center;
     background-color: #fff;
+    border-radius: 0 0 10px 10px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 25px 20px 31px 21px;
+    padding: 22px 20px;
 }

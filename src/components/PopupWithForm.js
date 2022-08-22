@@ -25,14 +25,6 @@ export class PopupWithForm extends Popup {
         });
     }
 
-    // handleConfirmBtn() {
-    //     this._formElement.addEventListener('submit', (evt) => {
-    //         evt.preventDefault();
-    //         this._submitHandler();
-    //         this.close();
-    //     })
-    // }
-
     close() {
         super.close();
         this._formElement.reset();

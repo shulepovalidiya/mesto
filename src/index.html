@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <!-- <link href="./pages/index.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -17,11 +16,16 @@
 
     <main>
         <section class="profile">
-            <img src="<%=require('./images/profile/profile__avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+            <img src="" alt="Аватар" class="profile__avatar">
+            <div class="profile__overlay">
+                <img src="<%=require('./images/profile/profile__edit-icon.svg')%>"
+                     alt="Иконка редактирования"
+                     class="profile__edit-icon">
+            </div>
             <div class="profile__info">
-                <h1 class="profile__username">Жак-Ив Кусто</h1>
+                <h1 class="profile__username"></h1>
                 <button type="button" class="profile__edit-button"></button>
-                <p class="profile__bio">Исследователь океана</p>
+                <p class="profile__bio"></p>
             </div>
             <button type="button" class="profile__add-button"></button>
         </section>
@@ -80,6 +84,19 @@
         </form>
     </div>
 
+    <div class="popup popup_hidden popup_type_update-avatar">
+        <button type="button" class="popup__close-button popup__update-profile-close-button"></button>
+        <form class="popup__form popup__form_type_update-avatar" novalidate>
+            <h2 class="popup__heading">Обновить аватар</h2>
+            <div class="popup__field-container">
+                <input type="url" id="avatar-link-field" class="popup__field popup__update-avatar-field"
+                       placeholder="Ссылка на фотографию" name="avatar-link" required>
+                <span class="avatar-link-field-error"></span>
+            </div>
+            <button type="submit" class="popup__submit-button popup__add-card-submit-button">Сохранить</button>
+        </form>
+    </div>
+
     <div class="popup popup_hidden popup_picture-view">
         <div class="popup__close-button popup__picture-close-button"></div>
         <figure class="popup__image-container">
@@ -97,12 +114,13 @@
         <img alt="Изображение места" class="places__image" src="#">
         <div class="places__caption">
             <h2 class="places__name"></h2>
-            <button type="button" class="places__like-button"></button>
-            <div class="places__like-counter"></div>
+            <div class="places__like-section">
+                <button type="button" class="places__like-button"></button>
+                <div class="places__like-counter"></div>
+            </div>
         </div>
     </li>
 </template>
-<!-- <script type="module" src="./scripts/index.js"></script> -->
 </body>
 
 </html>

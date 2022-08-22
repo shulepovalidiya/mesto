@@ -106,5 +106,22 @@ export class Api {
                 return res.json();
             }
         })
-    };
+    }
+
+    updateAvatar(link) {
+        return fetch(`https://mesto.nomoreparties.co/v1/cohort-48/users/me/avatar`, {
+            method: 'PATCH',
+            headers: {
+                authorization: this._authorization,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                avatar: link,
+            })
+        }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+    }
 }
