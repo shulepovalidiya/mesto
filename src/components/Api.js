@@ -4,34 +4,30 @@ export class Api {
         this._authorization = options.authorization;
     }
 
-    _handleResponse() {
-
+    _getResponseData(res) {
+        if (!res.ok) {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
     }
 
     getUserData() {
-        return fetch('https://nomoreparties.co/v1/cohort-48/users/me', {
+        return fetch(`${this._url}users/me`, {
             headers: {authorization: this._authorization},
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
         })
+            .then(res => this._getResponseData(res))
     }
 
     getInitialCards() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-48/cards', {
+        return fetch(`${this._url}cards`, {
             headers: {
                 authorization: this._authorization
             },
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
+        }).then(res => this._getResponseData(res))
     }
 
     setUserData(inputValues) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-48/users/me', {
+        return fetch(`${this._url}users/me`, {
             method: 'PATCH',
             headers: {
                 authorization: this._authorization,
@@ -41,15 +37,11 @@ export class Api {
                 name: inputValues.username,
                 about: inputValues.bio,
             })
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            })
+        }).then(res => this._getResponseData(res))
     }
 
     createNewCard(inputValues) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-48/cards', {
+        return fetch(`${this._url}cards`, {
             method: 'POST',
             headers: {
                 authorization: this._authorization,
@@ -59,57 +51,41 @@ export class Api {
                 name: inputValues.name,
                 link: inputValues.link,
             })
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
+        }).then(res => this._getResponseData(res))
     }
 
     deleteCard(cardID) {
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-48/cards/${cardID}`, {
+        return fetch(`${this._url}cards/${cardID}`, {
             method: 'DELETE',
             headers: {
                 authorization: this._authorization,
                 'Content-Type': 'application/json',
             }
-        }).then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-        })
+        }).then(res => this._getResponseData(res))
     }
 
     putLike(cardID) {
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-48/cards/${cardID}/likes`, {
+        return fetch(`${this._url}cards/likes/${cardID}`, {
             method: 'PUT',
             headers: {
                 authorization: this._authorization,
                 'Content-Type': 'application/json',
             }
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
+        }).then(res => this._getResponseData(res))
     }
 
     removeLike(cardID) {
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-48/cards/${cardID}/likes`, {
+        return fetch(`${this._url}cards/likes/${cardID}`, {
             method: 'DELETE',
             headers: {
                 authorization: this._authorization,
                 'Content-Type': 'application/json',
             }
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-        })
+        }).then(res => this._getResponseData(res))
     }
 
     updateAvatar(link) {
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-48/users/me/avatar`, {
+        return fetch(`${this._url}users/me/avatar`, {
             method: 'PATCH',
             headers: {
                 authorization: this._authorization,
@@ -118,10 +94,7 @@ export class Api {
             body: JSON.stringify({
                 avatar: link,
             })
-        }).then(res => {
-            if (res.ok) {
-                return res.json();
-            }
         })
+            .then(res => this._getResponseData(res))
     }
 }
